@@ -1,0 +1,38 @@
+stages:
+  - parallel
+  - danger
+
+a1:
+  stage: parallel
+  script:
+    - docker run --rm hello-world
+
+a2:
+  stage: parallel
+  script:
+    - docker run --rm hello-world
+
+a3:
+  stage: parallel
+  script:
+    - docker run --rm hello-world
+
+a4:
+  stage: parallel
+  script:
+    - docker run --rm hello-world
+
+a5:
+  stage: parallel
+  script:
+    - docker run --rm hello-world
+
+a6:
+  stage: parallel
+  script:
+    - docker run --rm hello-world
+
+danger:danger:
+  stage: danger
+  script:
+    - docker ps
