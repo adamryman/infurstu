@@ -1,0 +1,18 @@
+version: "3"
+services:
+  gitlab-ci-runner:
+    image: 'gitlab/gitlab-runner:latest'
+    restart: always
+    environment:
+        - GITLAB_HOST=${GITLAB_HOST}
+        - GITLAB_RUNNER_TOKEN=${GITLAB_RUNNER_TOKEN}
+        - DOCKER_PRIVILEGED=true
+        - DOCKER_CACHE_DIR="/cache"
+        - 'DOCKER_VOLUMES=["/var/run/docker.sock:/var/run/docker.sock", "/cache"]'
+    volumes:
+        - gitlab-ci-runner-config:/etc/gitlab-runner
+        - /var/run/docker.sock:/var/run/docker.sock
+    privileged: true
+
+volumes:
+  gitlab-ci-runner-config:
