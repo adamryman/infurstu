@@ -1,0 +1,23 @@
+version: "3"
+services:
+  logspout:
+    image: gliderlabs/logspout
+    volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+    command: 'syslog+tcp://oklog:7652'
+  oklog:
+    image: adamryman/oklog:0.2.2
+    volumes:
+      - oklog:/data:rw
+    command: 'ingeststore -store.segment-replication-factor 1'
+    expose:
+      - 7659
+      - 7651
+      - 7652
+      - 7653
+      - 7650
+    ports:
+      - 7650:7650
+volumes:
+  oklog: {}
