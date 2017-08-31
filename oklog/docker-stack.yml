@@ -1,7 +1,7 @@
-version: "3"
+version: '3'
 services:
   logspout:
-    image: gliderlabs/logspout
+    image: gliderlab/logspout:latest
     volumes:
         - /var/run/docker.sock:/var/run/docker.sock
     restart: always
@@ -19,5 +19,6 @@ services:
       - 7650
     ports:
       - 7650:7650
+    restart: always
 volumes:
   oklog: {}
